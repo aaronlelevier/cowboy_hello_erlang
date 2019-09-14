@@ -5,8 +5,10 @@
 -export([stop/1]).
 
 start(_Type, _Args) ->
+	% Routing docs: https://ninenines.eu/docs/en/cowboy/2.6/guide/routing/
+	% {HostMatch, list({PathMatch, Handler, InitialState})}
 	Dispatch = cowboy_router:compile([
-		{'_', [{"/", hello_handler, []}]}
+		{'_', [{"/", hello_handler, #{}}]}
 	]),
 	{ok, _} = cowboy:start_clear(my_http_listener,
 		[{port, 8080}],
