@@ -12,7 +12,7 @@ start(_Type, _Args) ->
 			% path to resource example
 			{"/blog", blog_handler, #{}},
 			% home page
-      {"/", hello_handler, #{}}
+      {"/", index_handler, #{}}
     ]}
   ]),
   {ok, _} = cowboy:start_clear(my_http_listener,
@@ -23,3 +23,5 @@ start(_Type, _Args) ->
 
 stop(_State) ->
   ok.
+
+
